@@ -1,0 +1,6 @@
+#!/bin/sh
+CURRENT_ENGINE=`ibus engine`
+
+[ "$CURRENT_ENGINE" = Bamboo ] && ibus engine BambooUs || ibus engine Bamboo
+# Send signal to dwmblocks
+pkill -RTMIN+28 dwmblocks

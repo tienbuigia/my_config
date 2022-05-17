@@ -1,0 +1,11 @@
+#!/bin/sh
+# Button
+case $BLOCK_BUTTON in
+	1) swapSinks;;
+esac
+
+# echo `pactl get-default-sink`
+
+[ "`pactl get-default-sink`" = "alsa_output.usb-Aisa_Expert_Wireless_Audio-03.analog-stereo" ] && \
+	echo "🎧" || \
+	echo "📢"

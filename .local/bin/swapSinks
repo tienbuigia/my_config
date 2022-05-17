@@ -1,0 +1,14 @@
+#!/bin/sh
+DEFAULT_SINK=`pactl get-default-sink`
+
+# Use if... then for readability
+if [ "$DEFAULT_SINK" = "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra5" ]; then
+	pactl set-default-sink alsa_output.usb-Aisa_Expert_Wireless_Audio-03.analog-stereo
+else
+	pactl set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra5
+fi
+
+# Send signal to sb-volume
+pkill -RTMIN+10 dwmblocks
+# Send signal to sb-currentSink
+pkill -RTMIN+27 dwmblocks
